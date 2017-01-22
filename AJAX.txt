@@ -1,0 +1,2 @@
+I am From a File named AJAX.txt!
+I am only sending Data!

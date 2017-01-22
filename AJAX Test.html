@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<div id="text"></div>
+		
+		<script>
+			var text = document.getElementById("text")
+			function loadDoc() {
+				var xhttp = new XMLHttpRequest();
+				
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						text.innerHTML = JSON.parse(this.responseText);
+					}
+				}
+				
+				xhttp.open("GET", "AJAX.json", true);
+				xhttp.send();
+			};
+			loadDoc();
+		</script>
+	</body>
+</html>
