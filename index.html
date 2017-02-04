@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div id="text"></div>
+		<h1>type in the value you want to send to the internet, then click send</h1>
+		<h1>or click recieve to get a result</h1>
+		
+		<input id="insert" />
+		<br />
+		<button id="send">Send</button><button id="recieve">Recieve</button>
+		
+		<div id="text">Value: <div id="json"></div></div>
 		
 		<script>
-			var data
-			var text = document.getElementById("text")
-			function loadDoc() {
-				var xhttp = new XMLHttpRequest();
-				
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						data = this.responseText;
-					}
-				}
-				
-				xhttp.open("GET", "AJAX.json", true);
-				xhttp.send();
-			};
-			loadDoc();
-			
-			text.innerHTML = data.lineOne
+			$("#recieve").click(function() {
+				$("#json").load("JSON.txt");
+			});
+			$("#send").click(function() {
+				$.post("JSON.txt", $("#insert").val())	
+			});
 		</script>
 	</body>
 </html>
